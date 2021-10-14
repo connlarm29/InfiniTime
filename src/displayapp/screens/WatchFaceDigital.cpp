@@ -57,12 +57,16 @@ WatchFaceDigital::WatchFaceDigital(DisplayApp* app,
   lv_obj_set_style_local_text_color(label_date, LV_LABEL_PART_MAIN, LV_STATE_DEFAULT, lv_color_hex(0x999999));
 
   label_time = lv_label_create(lv_scr_act(), nullptr);
+  static lv_style_t timeStyle;
+  lv_style_init(&timeStyle);
+  lv_style_set_radius(&timeStyle, LV_STATE_DEFAULT, 5);
+  lv_style_set_shadow_width(&timeStyle, LV_STATE_DEFAULT, 8);
+  lv_style_set_shadow_color(&timeStyle, LV_STATE_DEFAULT, LV_COLOR_BLUE);
+  lv_style_set_shadow_ofs_x(&timeStyle, LV_STATE_DEFAULT, 10);
+  lv_style_set_shadow_ofs_y(&timeStyle, LV_STATE_DEFAULT, 20);
+
   lv_obj_set_style_local_text_font(label_time, LV_LABEL_PART_MAIN, LV_STATE_DEFAULT, &montserrat_bold);
   lv_obj_set_style_local_text_color(label_time, LV_LABEL_PART_MAIN, LV_STATE_DEFAULT, lv_color_hex(0xEADF3E));
-  lv_obj_set_style_shadow_width(label_time, 8, LV_STATE_DEFAULT);
-  lv_obj_set_style_shadow_color(label_time, LV_COLOR_BLUE, LV_STATE_DEFAULT);
-  lv_obj_set_style_shadow_ofs_x(label_time, 10, LV_STATE_DEFAULT);
-  lv_obj_set_style_shadow_ofs_y(label_time, 20, LV_STATE_DEFAULT);
 
   lv_obj_align(label_time, lv_scr_act(), LV_ALIGN_IN_RIGHT_MID, 0, 0);
 
