@@ -42,8 +42,9 @@ namespace Pinetime {
         Pinetime::Controllers::DateTime::Months currentMonth = Pinetime::Controllers::DateTime::Months::Unknown;
         Pinetime::Controllers::DateTime::Days currentDayOfWeek = Pinetime::Controllers::DateTime::Days::Unknown;
         uint8_t currentDay = 0;
+
         unsigned int watchColorPrimary = 0xA9D344;
-        unsinged int watchColorSecondary = 0xA9D344;
+        unsigned int watchColorSecondary = 0xA9D344;
         unsigned int watchColorTertiary = 0xB98F25;
 
         DirtyValue<uint8_t> batteryPercentRemaining {};
