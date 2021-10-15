@@ -14,7 +14,7 @@ namespace Pinetime {
     class Battery;
     class Ble;
     class NotificationManager;
-    class HeartRateController;
+    // class HeartRateController;
     class MotionController;
   }
 
@@ -29,7 +29,7 @@ namespace Pinetime {
                          Controllers::Ble& bleController,
                          Controllers::NotificationManager& notificatioManager,
                          Controllers::Settings& settingsController,
-                         Controllers::HeartRateController& heartRateController,
+                         // Controllers::HeartRateController& heartRateController,
                          Controllers::MotionController& motionController);
         ~WatchFaceDigital() override;
 
@@ -42,6 +42,9 @@ namespace Pinetime {
         Pinetime::Controllers::DateTime::Months currentMonth = Pinetime::Controllers::DateTime::Months::Unknown;
         Pinetime::Controllers::DateTime::Days currentDayOfWeek = Pinetime::Controllers::DateTime::Days::Unknown;
         uint8_t currentDay = 0;
+        unsigned int watchColorPrimary = 0xA9D344;
+        unsinged int watchColorSecondary = 0xA9D344;
+        unsigned int watchColorTertiary = 0xB98F25;
 
         DirtyValue<uint8_t> batteryPercentRemaining {};
         DirtyValue<bool> powerPresent {};
@@ -49,8 +52,8 @@ namespace Pinetime {
         DirtyValue<std::chrono::time_point<std::chrono::system_clock, std::chrono::nanoseconds>> currentDateTime {};
         DirtyValue<bool> motionSensorOk {};
         DirtyValue<uint32_t> stepCount {};
-        DirtyValue<uint8_t> heartbeat {};
-        DirtyValue<bool> heartbeatRunning {};
+        // DirtyValue<uint8_t> heartbeat {};
+        // DirtyValue<bool> heartbeatRunning {};
         DirtyValue<bool> notificationState {};
 
         lv_obj_t* label_time;
@@ -61,9 +64,9 @@ namespace Pinetime {
         lv_obj_t* batteryIcon;
         lv_obj_t* bleIcon;
         lv_obj_t* batteryPlug;
-        lv_obj_t* heartbeatIcon;
-        lv_obj_t* heartbeatValue;
-        lv_obj_t* stepIcon;
+        // lv_obj_t* heartbeatIcon;
+        // lv_obj_t* heartbeatValue;
+        // lv_obj_t* stepIcon;
         lv_obj_t* stepValue;
         lv_obj_t* notificationIcon;
 
@@ -72,7 +75,7 @@ namespace Pinetime {
         Controllers::Ble& bleController;
         Controllers::NotificationManager& notificatioManager;
         Controllers::Settings& settingsController;
-        Controllers::HeartRateController& heartRateController;
+        // Controllers::HeartRateController& heartRateController;
         Controllers::MotionController& motionController;
 
         lv_task_t* taskRefresh;
