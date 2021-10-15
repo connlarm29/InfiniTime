@@ -54,6 +54,7 @@ namespace Pinetime {
         DirtyValue<bool> notificationState {};
 
         lv_obj_t* label_time;
+        lv_obj_t* label_time_shadow;
         lv_obj_t* label_time_ampm;
         lv_obj_t* label_date;
         lv_obj_t* backgroundLabel;
