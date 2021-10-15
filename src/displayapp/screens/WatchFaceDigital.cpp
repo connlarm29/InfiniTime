@@ -56,19 +56,18 @@ WatchFaceDigital::WatchFaceDigital(DisplayApp* app,
   lv_obj_align(label_date, lv_scr_act(), LV_ALIGN_CENTER, 0, 60);
   lv_obj_set_style_local_text_color(label_date, LV_LABEL_PART_MAIN, LV_STATE_DEFAULT, lv_color_hex(0x999999));
 
-  label_time = lv_label_create(lv_scr_act(), nullptr);
-  static lv_style_t timeStyle;
-  lv_style_init(&timeStyle);
-  lv_style_set_radius(&timeStyle, LV_STATE_DEFAULT, 5);
-  lv_style_set_shadow_width(&timeStyle, LV_STATE_DEFAULT, 8);
-  lv_style_set_shadow_color(&timeStyle, LV_STATE_DEFAULT, LV_COLOR_BLUE);
-  lv_style_set_shadow_ofs_x(&timeStyle, LV_STATE_DEFAULT, 10);
-  lv_style_set_shadow_ofs_y(&timeStyle, LV_STATE_DEFAULT, 20);
+  //Creates a shadow for the clock
+  label_time_shadow = lv_label_create(lv_scr_act(), nullptr);
+  lv_obj_set_style_local_text_font(label_time_shadow, LV_LABEL_PART_MAIN, LV_STATE_DEFAULT, &montserrat_thin);
+  lv_obj_set_style_local_text_color(label_time_shadow, LV_LABEL_PART_MAIN, LV_STATE_DEFAULT, lv_color_hex(0x005000));
 
-  lv_obj_set_style_local_text_font(label_time, LV_LABEL_PART_MAIN, LV_STATE_DEFAULT, &montserrat_bold);
-  lv_obj_set_style_local_text_color(label_time, LV_LABEL_PART_MAIN, LV_STATE_DEFAULT, lv_color_hex(0xEADF3E));
+  label_time = lv_label_create(lv_scr_act(), nullptr);
+  lv_obj_set_style_local_text_font(label_time, LV_LABEL_PART_MAIN, LV_STATE_DEFAULT, &montserrat_thin);
+  lv_obj_set_style_local_text_color(label_time, LV_LABEL_PART_MAIN, LV_STATE_DEFAULT, lv_color_hex(0x3CFF3C));
+
 
   lv_obj_align(label_time, lv_scr_act(), LV_ALIGN_IN_RIGHT_MID, 0, 0);
+  lv_obj_align(label_time_shadow, lv_scr_act(), LV_ALIGN_IN_RIGHT_MID, 5, 0);
 
   label_time_ampm = lv_label_create(lv_scr_act(), nullptr);
   lv_label_set_text_static(label_time_ampm, "");
@@ -194,11 +193,15 @@ void WatchFaceDigital::Refresh() {
         }
       }
 
+
+      lv_label_set_text_fmt(label_time_shadow, "%s:%s", hoursChar, minutesChar);
       lv_label_set_text_fmt(label_time, "%s:%s", hoursChar, minutesChar);
 
       if (settingsController.GetClockType() == Controllers::Settings::ClockType::H12) {
+        lv_obj_align(label_time_shadow, lv_scr_act(), LV_ALIGN_IN_RIGHT_MID, 0, 0);
         lv_obj_align(label_time, lv_scr_act(), LV_ALIGN_IN_RIGHT_MID, 0, 0);
       } else {
+        lv_obj_align(label_time_shadow, lv_scr_act(), LV_ALIGN_CENTER, 0, 0);
         lv_obj_align(label_time, lv_scr_act(), LV_ALIGN_CENTER, 0, 0);
       }
     }
