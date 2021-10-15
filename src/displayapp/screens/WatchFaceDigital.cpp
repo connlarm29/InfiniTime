@@ -12,6 +12,9 @@
 #include "components/ble/NotificationManager.h"
 #include "components/heartrate/HeartRateController.h"
 #include "components/motion/MotionController.h"
+
+LV_IMG_DECLARE(watch_face_bg_1)
+
 using namespace Pinetime::Applications::Screens;
 
 WatchFaceDigital::WatchFaceDigital(DisplayApp* app,
@@ -32,6 +35,10 @@ WatchFaceDigital::WatchFaceDigital(DisplayApp* app,
     heartRateController {heartRateController},
     motionController {motionController} {
   settingsController.SetClockFace(0);
+
+  lv_obj_t* bg_img = lv_img_create(lv_scr_act(), NULL);
+  lv_img_set_src(bg_img, &watch_face_bg_1);
+  lv_obj_align(bg_img, NULL, LV_ALIGN_CENTER, 0,0);
 
   batteryIcon = lv_label_create(lv_scr_act(), nullptr);
   lv_label_set_text(batteryIcon, Symbols::batteryFull);
@@ -70,12 +77,12 @@ WatchFaceDigital::WatchFaceDigital(DisplayApp* app,
   lv_obj_align(label_time, lv_scr_act(), LV_ALIGN_IN_RIGHT_MID, 0, 0);
   lv_obj_align(label_time_shadow, lv_scr_act(), LV_ALIGN_IN_RIGHT_MID, 5, 0);
 
-  backgroundLabel = lv_label_create(lv_scr_act(), nullptr);
-  lv_obj_set_click(backgroundLabel, true);
-  lv_label_set_long_mode(backgroundLabel, LV_LABEL_LONG_CROP);
-  lv_obj_set_size(backgroundLabel, 240, 240);
-  lv_obj_set_pos(backgroundLabel, 0, 0);
-  lv_label_set_text(backgroundLabel, "");
+  // backgroundLabel = lv_label_create(lv_scr_act(), nullptr);
+  // lv_obj_set_click(backgroundLabel, true);
+  // lv_label_set_long_mode(backgroundLabel, LV_LABEL_LONG_CROP);
+  // lv_obj_set_size(backgroundLabel, 240, 240);
+  // lv_obj_set_pos(backgroundLabel, 0, 0);
+  // lv_label_set_text(backgroundLabel, "");
 
   heartbeatIcon = lv_label_create(lv_scr_act(), nullptr);
   lv_label_set_text(heartbeatIcon, Symbols::heartBeat);
