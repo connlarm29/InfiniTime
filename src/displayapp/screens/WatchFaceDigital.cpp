@@ -53,9 +53,9 @@ WatchFaceDigital::WatchFaceDigital(DisplayApp* app,
   lv_obj_align(notificationIcon, nullptr, LV_ALIGN_IN_TOP_LEFT, 0, 0);
 
   label_date = lv_label_create(lv_scr_act(), nullptr);
-  lv_obj_align(label_date, lv_scr_act(), LV_ALIGN_CENTER, 0, 60);
+  lv_obj_align(label_date, lv_scr_act(), LV_ALIGN_CENTER, 0, 85);
   lv_obj_set_style_local_text_color(label_date, LV_LABEL_PART_MAIN, LV_STATE_DEFAULT, lv_color_hex(0x3CFF3C));
-  lv_obj_set_style_local_text_font(label_date,LV_LABEL_PART_MAIN, LV_STATE_DEFAULT, LV_FONT_MONTSERRAT_28);
+  lv_obj_set_style_local_text_font(label_date,LV_LABEL_PART_MAIN, LV_STATE_DEFAULT, &jetbrains_mono_bold_20);
 
   //Creates a shadow for the clock
   label_time_shadow = lv_label_create(lv_scr_act(), nullptr);
@@ -69,10 +69,6 @@ WatchFaceDigital::WatchFaceDigital(DisplayApp* app,
 
   lv_obj_align(label_time, lv_scr_act(), LV_ALIGN_IN_RIGHT_MID, 0, 0);
   lv_obj_align(label_time_shadow, lv_scr_act(), LV_ALIGN_IN_RIGHT_MID, 5, 0);
-
-  // label_time_ampm = lv_label_create(lv_scr_act(), nullptr);
-  // lv_label_set_text_static(label_time_ampm, "");
-  // lv_obj_align(label_time_ampm, lv_scr_act(), LV_ALIGN_IN_RIGHT_MID, -30, -55);
 
   backgroundLabel = lv_label_create(lv_scr_act(), nullptr);
   lv_obj_set_click(backgroundLabel, true);
@@ -131,9 +127,9 @@ void WatchFaceDigital::Refresh() {
   if (bleState.IsUpdated()) {
     lv_label_set_text(bleIcon, BleIcon::GetIcon(bleState.Get()));
   }
-  lv_obj_align(batteryIcon, lv_scr_act(), LV_ALIGN_IN_TOP_RIGHT, 0, 0);
-  lv_obj_align(batteryPlug, batteryIcon, LV_ALIGN_OUT_LEFT_MID, -5, 0);
-  lv_obj_align(bleIcon, batteryPlug, LV_ALIGN_OUT_LEFT_MID, -5, 0);
+  lv_obj_align(batteryIcon, lv_scr_act(), LV_ALIGN_CENTER, 0, 60);
+  lv_obj_align(batteryPlug, batteryIcon, LV_ALIGN_CENTER, -5, 60);
+  lv_obj_align(bleIcon, batteryPlug, LV_ALIGN_CENTER, -10, 60);
 
   notificationState = notificatioManager.AreNewNotificationsAvailable();
   if (notificationState.IsUpdated()) {
@@ -165,18 +161,6 @@ void WatchFaceDigital::Refresh() {
     if (settingsController.GetClockType() == Controllers::Settings::ClockType::H24) {
       sprintf(hoursChar, "%02d", hour);
     } else {
-      // if (hour == 0 && hour != 12) {
-      //   hour = 12;
-      //   sprintf(ampmChar, "AM");
-      // } else if (hour == 12 && hour != 0) {
-      //   hour = 12;
-      //   sprintf(ampmChar, "PM");
-      // } else if (hour < 12 && hour != 0) {
-      //   sprintf(ampmChar, "AM");
-      // } else if (hour > 12 && hour != 0) {
-      //   hour = hour - 12;
-      //   sprintf(ampmChar, "PM");
-      // }
       sprintf(hoursChar, "%02d", hour);
     }
 
@@ -200,13 +184,6 @@ void WatchFaceDigital::Refresh() {
 
       lv_obj_align(label_time_shadow, lv_scr_act(), LV_ALIGN_CENTER, -8, -4);
       lv_obj_align(label_time, lv_scr_act(), LV_ALIGN_CENTER, 0, 0);
-      // if (settingsController.GetClockType() == Controllers::Settings::ClockType::H12) {
-      //   lv_obj_align(label_time_shadow, lv_scr_act(), LV_ALIGN_IN_RIGHT_MID, -8, -4);
-      //   lv_obj_align(label_time, lv_scr_act(), LV_ALIGN_IN_RIGHT_MID, 0, 0);
-      // } else {
-      //   lv_obj_align(label_time_shadow, lv_scr_act(), LV_ALIGN_CENTER, -8, -4);
-      //   lv_obj_align(label_time, lv_scr_act(), LV_ALIGN_CENTER, 0, 0);
-      // }
     }
 
     if ((year != currentYear) || (month != currentMonth) || (dayOfWeek != currentDayOfWeek) || (day != currentDay)) {
