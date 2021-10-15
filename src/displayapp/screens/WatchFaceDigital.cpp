@@ -52,7 +52,7 @@ WatchFaceDigital::WatchFaceDigital(DisplayApp* app,
   bleIcon = lv_label_create(lv_scr_act(), nullptr);
   lv_obj_set_style_local_text_color(bleIcon, LV_LABEL_PART_MAIN, LV_STATE_DEFAULT, watchColorTertiary);
   lv_label_set_text(bleIcon, Symbols::bluetooth);
-  lv_obj_align(bleIcon, batteryPlug, LV_ALIGN_OUT_LEFT_MID, -5, 0);
+  lv_obj_align(bleIcon, batteryIcon, LV_ALIGN_OUT_RIGHT_MID, -5, 0);
 
   notificationIcon = lv_label_create(lv_scr_act(), nullptr);
   lv_obj_set_style_local_text_color(notificationIcon, LV_LABEL_PART_MAIN, LV_STATE_DEFAULT, watchColorTertiary);
@@ -135,8 +135,8 @@ void WatchFaceDigital::Refresh() {
     lv_label_set_text(bleIcon, BleIcon::GetIcon(bleState.Get()));
   }
   lv_obj_align(batteryIcon, lv_scr_act(), LV_ALIGN_CENTER, 0, 60);
-  lv_obj_align(batteryPlug, batteryIcon, LV_ALIGN_CENTER, -5, 60);
-  lv_obj_align(bleIcon, batteryPlug, LV_ALIGN_CENTER, -10, 60);
+  lv_obj_align(batteryPlug, batteryIcon, LV_ALIGN_OUT_LEFT_MID, -5, 0);
+  lv_obj_align(bleIcon, BatteryIcon, LV_ALIGN_OUT_RIGHT_MID, -5, 0);
 
   notificationState = notificatioManager.AreNewNotificationsAvailable();
   if (notificationState.IsUpdated()) {
@@ -168,6 +168,13 @@ void WatchFaceDigital::Refresh() {
     if (settingsController.GetClockType() == Controllers::Settings::ClockType::H24) {
       sprintf(hoursChar, "%02d", hour);
     } else {
+      if (hour == 0 && hour != 12) {
+        hour = 12;
+      } else if (hour == 12 && hour != 0) {
+        hour = 12;
+      } else if (hour > 12 && hour != 0) {
+        hour = hour - 12;
+      }
       sprintf(hoursChar, "%02d", hour);
     }
 

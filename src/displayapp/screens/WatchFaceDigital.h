@@ -44,7 +44,7 @@ namespace Pinetime {
         uint8_t currentDay = 0;
 
         lv_color_t watchColorPrimary = lv_color_hex(0xA9D344);
-        lv_color_t watchColorSecondary = lv_color_hex(0xA9D344);
+        lv_color_t watchColorSecondary = lv_color_hex(0x5C7325);
         lv_color_t watchColorTertiary = lv_color_hex(0xB98F25);
 
         DirtyValue<uint8_t> batteryPercentRemaining {};
