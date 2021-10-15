@@ -61,7 +61,6 @@ std::unique_ptr<Screen> Clock::WatchFaceDigitalScreen() {
                                                      bleController,
                                                      notificatioManager,
                                                      settingsController,
-                                                     heartRateController,
                                                      motionController);
 }
 
