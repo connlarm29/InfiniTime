@@ -35,12 +35,12 @@ WatchFaceDigital::WatchFaceDigital(DisplayApp* app,
 
   batteryIcon = lv_label_create(lv_scr_act(), nullptr);
   lv_label_set_text(batteryIcon, Symbols::batteryFull);
-  lv_obj_align(batteryIcon, lv_scr_act(), LV_ALIGN_IN_TOP_RIGHT, 0, 0);
+  lv_obj_align(batteryIcon, lv_scr_act(), LV_ALIGN_CENTER, 0, 60);
 
   batteryPlug = lv_label_create(lv_scr_act(), nullptr);
   lv_obj_set_style_local_text_color(batteryPlug, LV_LABEL_PART_MAIN, LV_STATE_DEFAULT, lv_color_hex(0xFF0000));
   lv_label_set_text(batteryPlug, Symbols::plug);
-  lv_obj_align(batteryPlug, batteryIcon, LV_ALIGN_OUT_LEFT_MID, -5, 0);
+  lv_obj_align(batteryPlug, batteryIcon, LV_ALIGN_CENTER, -5, 60);
 
   bleIcon = lv_label_create(lv_scr_act(), nullptr);
   lv_obj_set_style_local_text_color(bleIcon, LV_LABEL_PART_MAIN, LV_STATE_DEFAULT, lv_color_hex(0x0000FF));
@@ -54,7 +54,8 @@ WatchFaceDigital::WatchFaceDigital(DisplayApp* app,
 
   label_date = lv_label_create(lv_scr_act(), nullptr);
   lv_obj_align(label_date, lv_scr_act(), LV_ALIGN_CENTER, 0, 60);
-  lv_obj_set_style_local_text_color(label_date, LV_LABEL_PART_MAIN, LV_STATE_DEFAULT, lv_color_hex(0x999999));
+  lv_obj_set_style_local_text_color(label_date, LV_LABEL_PART_MAIN, LV_STATE_DEFAULT, lv_color_hex(0x3CFF3C));
+  lv_obj_set_style_local_text_font(label_date,LV_LABEL_PART_MAIN, LV_STATE_DEFAULT, LV_FONT_MONTSERRAT_28);
 
   //Creates a shadow for the clock
   label_time_shadow = lv_label_create(lv_scr_act(), nullptr);
@@ -161,23 +162,23 @@ void WatchFaceDigital::Refresh() {
 
     char hoursChar[3];
     // char ampmChar[3];
-    // if (settingsController.GetClockType() == Controllers::Settings::ClockType::H24) {
-    //   sprintf(hoursChar, "%02d", hour);
-    // } else {
-    //   if (hour == 0 && hour != 12) {
-    //     hour = 12;
-    //     sprintf(ampmChar, "AM");
-    //   } else if (hour == 12 && hour != 0) {
-    //     hour = 12;
-    //     sprintf(ampmChar, "PM");
-    //   } else if (hour < 12 && hour != 0) {
-    //     sprintf(ampmChar, "AM");
-    //   } else if (hour > 12 && hour != 0) {
-    //     hour = hour - 12;
-    //     sprintf(ampmChar, "PM");
-    //   }
-    //   sprintf(hoursChar, "%02d", hour);
-    // }
+    if (settingsController.GetClockType() == Controllers::Settings::ClockType::H24) {
+      sprintf(hoursChar, "%02d", hour);
+    } else {
+      // if (hour == 0 && hour != 12) {
+      //   hour = 12;
+      //   sprintf(ampmChar, "AM");
+      // } else if (hour == 12 && hour != 0) {
+      //   hour = 12;
+      //   sprintf(ampmChar, "PM");
+      // } else if (hour < 12 && hour != 0) {
+      //   sprintf(ampmChar, "AM");
+      // } else if (hour > 12 && hour != 0) {
+      //   hour = hour - 12;
+      //   sprintf(ampmChar, "PM");
+      // }
+      sprintf(hoursChar, "%02d", hour);
+    }
 
     if ((hoursChar[0] != displayedChar[0]) or (hoursChar[1] != displayedChar[1]) or (minutesChar[0] != displayedChar[2]) or
         (minutesChar[1] != displayedChar[3])) {
@@ -214,7 +215,7 @@ void WatchFaceDigital::Refresh() {
       } else {
         lv_label_set_text_fmt(label_date, "%s %d", dateTimeController.MonthShortToString(), day);
       }
-      lv_obj_align(label_date, lv_scr_act(), LV_ALIGN_CENTER, 0, 75);
+      lv_obj_align(label_date, lv_scr_act(), LV_ALIGN_CENTER, 0, 85);
 
       currentYear = year;
       currentMonth = month;
