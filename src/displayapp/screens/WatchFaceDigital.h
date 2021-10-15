@@ -43,9 +43,9 @@ namespace Pinetime {
         Pinetime::Controllers::DateTime::Days currentDayOfWeek = Pinetime::Controllers::DateTime::Days::Unknown;
         uint8_t currentDay = 0;
 
-        unsigned int watchColorPrimary = 0xA9D344;
-        unsigned int watchColorSecondary = 0xA9D344;
-        unsigned int watchColorTertiary = 0xB98F25;
+        lv_color_t watchColorPrimary = lv_color_hex(0xA9D344);
+        lv_color_t watchColorSecondary = lv_color_hex(0xA9D344);
+        lv_color_t watchColorTertiary = lv_color_hex(0xB98F25);
 
         DirtyValue<uint8_t> batteryPercentRemaining {};
         DirtyValue<bool> powerPresent {};
