@@ -45,33 +45,33 @@ WatchFaceDigital::WatchFaceDigital(DisplayApp* app,
   lv_obj_align(batteryIcon, lv_scr_act(), LV_ALIGN_CENTER, 0, 60);
 
   batteryPlug = lv_label_create(lv_scr_act(), nullptr);
-  lv_obj_set_style_local_text_color(batteryPlug, LV_LABEL_PART_MAIN, LV_STATE_DEFAULT, lv_color_hex(watchColorTertiary));
+  lv_obj_set_style_local_text_color(batteryPlug, LV_LABEL_PART_MAIN, LV_STATE_DEFAULT, watchColorTertiary);
   lv_label_set_text(batteryPlug, Symbols::plug);
   lv_obj_align(batteryPlug, batteryIcon, LV_ALIGN_CENTER, -5, 60);
 
   bleIcon = lv_label_create(lv_scr_act(), nullptr);
-  lv_obj_set_style_local_text_color(bleIcon, LV_LABEL_PART_MAIN, LV_STATE_DEFAULT, lv_color_hex(watchColorTertiary));
+  lv_obj_set_style_local_text_color(bleIcon, LV_LABEL_PART_MAIN, LV_STATE_DEFAULT, watchColorTertiary);
   lv_label_set_text(bleIcon, Symbols::bluetooth);
   lv_obj_align(bleIcon, batteryPlug, LV_ALIGN_OUT_LEFT_MID, -5, 0);
 
   notificationIcon = lv_label_create(lv_scr_act(), nullptr);
-  lv_obj_set_style_local_text_color(notificationIcon, LV_LABEL_PART_MAIN, LV_STATE_DEFAULT, lv_color_hex(watchColorTertiary));
+  lv_obj_set_style_local_text_color(notificationIcon, LV_LABEL_PART_MAIN, LV_STATE_DEFAULT, watchColorTertiary);
   lv_label_set_text(notificationIcon, NotificationIcon::GetIcon(false));
   lv_obj_align(notificationIcon, nullptr, LV_ALIGN_IN_TOP_LEFT, 0, 0);
 
   label_date = lv_label_create(lv_scr_act(), nullptr);
   lv_obj_align(label_date, lv_scr_act(), LV_ALIGN_CENTER, 0, 85);
-  lv_obj_set_style_local_text_color(label_date, LV_LABEL_PART_MAIN, LV_STATE_DEFAULT, lv_color_hex(watchColorSecondary));
+  lv_obj_set_style_local_text_color(label_date, LV_LABEL_PART_MAIN, LV_STATE_DEFAULT, watchColorSecondary);
   lv_obj_set_style_local_text_font(label_date,LV_LABEL_PART_MAIN, LV_STATE_DEFAULT, &jetbrains_mono_bold_20);
 
   //Creates a shadow for the clock
   label_time_shadow = lv_label_create(lv_scr_act(), nullptr);
   lv_obj_set_style_local_text_font(label_time_shadow, LV_LABEL_PART_MAIN, LV_STATE_DEFAULT, &saria_condensed);
-  lv_obj_set_style_local_text_color(label_time_shadow, LV_LABEL_PART_MAIN, LV_STATE_DEFAULT, lv_color_hex(watchColorSecondary));
+  lv_obj_set_style_local_text_color(label_time_shadow, LV_LABEL_PART_MAIN, LV_STATE_DEFAULT, watchColorSecondary);
 
   label_time = lv_label_create(lv_scr_act(), nullptr);
   lv_obj_set_style_local_text_font(label_time, LV_LABEL_PART_MAIN, LV_STATE_DEFAULT, &saria_condensed);
-  lv_obj_set_style_local_text_color(label_time, LV_LABEL_PART_MAIN, LV_STATE_DEFAULT, lv_color_hex(watchColorPrimary));
+  lv_obj_set_style_local_text_color(label_time, LV_LABEL_PART_MAIN, LV_STATE_DEFAULT, watchColorPrimary);
 
 
   lv_obj_align(label_time, lv_scr_act(), LV_ALIGN_IN_RIGHT_MID, 0, 0);
@@ -95,7 +95,7 @@ WatchFaceDigital::WatchFaceDigital(DisplayApp* app,
   // lv_obj_align(heartbeatValue, heartbeatIcon, LV_ALIGN_OUT_RIGHT_MID, 5, 0);
 
   stepValue = lv_label_create(lv_scr_act(), nullptr);
-  lv_obj_set_style_local_text_color(stepValue, LV_LABEL_PART_MAIN, LV_STATE_DEFAULT, lv_color_hex(watchColorTertiary));
+  lv_obj_set_style_local_text_color(stepValue, LV_LABEL_PART_MAIN, LV_STATE_DEFAULT, watchColorTertiary);
   lv_label_set_text(stepValue, "0");
   lv_obj_align(stepValue, lv_scr_act(), LV_ALIGN_CENTER, 0, -60);
 
