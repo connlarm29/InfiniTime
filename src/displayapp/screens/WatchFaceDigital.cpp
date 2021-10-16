@@ -136,7 +136,7 @@ void WatchFaceDigital::Refresh() {
   }
   lv_obj_align(batteryIcon, lv_scr_act(), LV_ALIGN_CENTER, 0, 60);
   lv_obj_align(batteryPlug, batteryIcon, LV_ALIGN_OUT_LEFT_MID, -5, 0);
-  lv_obj_align(bleIcon, BatteryIcon, LV_ALIGN_OUT_RIGHT_MID, -5, 0);
+  lv_obj_align(bleIcon, batteryIcon, LV_ALIGN_OUT_RIGHT_MID, -5, 0);
 
   notificationState = notificatioManager.AreNewNotificationsAvailable();
   if (notificationState.IsUpdated()) {
