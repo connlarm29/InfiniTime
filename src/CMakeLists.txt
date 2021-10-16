@@ -438,7 +438,7 @@ list(APPEND SOURCE_FILES
         displayapp/screens/settings/SettingSetTime.cpp
 
         ## Watch faces
-        displayapp/icons/bg_clock.c
+        displayapp/icons/bg_sus.c
         displayapp/icons/watch_face_bg_1.c
         displayapp/screens/WatchFaceAnalog.cpp
         displayapp/screens/WatchFaceDigital.cpp
