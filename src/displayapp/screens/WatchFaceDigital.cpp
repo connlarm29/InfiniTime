@@ -195,5 +195,5 @@ void WatchFaceDigital::Refresh() {
   // if (stepCount.IsUpdated() || motionSensorOk.IsUpdated()) {
   //   lv_label_set_text_fmt(stepValue, "%lu", stepCount.Get());
   //   lv_obj_align(stepValue, lv_scr_act(), LV_ALIGN_CENTER, 0, -60);
-  }
+  //}
 }
