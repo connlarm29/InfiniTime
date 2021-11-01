@@ -43,16 +43,19 @@ namespace Pinetime {
         Pinetime::Controllers::DateTime::Days currentDayOfWeek = Pinetime::Controllers::DateTime::Days::Unknown;
         uint8_t currentDay = 0;
 
-        lv_color_t watchColorPrimary = lv_color_hex(0xFF053F);
-        lv_color_t watchColorSecondary = lv_color_hex(0xA30328);
-        lv_color_t watchColorTertiary = lv_color_hex(0xA13591);
+        lv_color_t watchColorPrimary = lv_color_hex(0xE8985E);
+        lv_color_t watchColorSecondary = lv_color_hex(0x2A2E45);
+        lv_color_t watchColorTertiary = lv_color_hex(0x549F93);
+
+        int16_t sliderOffset = 120;
+        int8_t sliderV = 3;
 
         DirtyValue<uint8_t> batteryPercentRemaining {};
         DirtyValue<bool> powerPresent {};
         DirtyValue<bool> bleState {};
         DirtyValue<std::chrono::time_point<std::chrono::system_clock, std::chrono::nanoseconds>> currentDateTime {};
         DirtyValue<bool> motionSensorOk {};
-        DirtyValue<uint32_t> stepCount {};
+        // DirtyValue<uint32_t> stepCount {};
         // DirtyValue<uint8_t> heartbeat {};
         // DirtyValue<bool> heartbeatRunning {};
         DirtyValue<bool> notificationState {};
@@ -65,10 +68,11 @@ namespace Pinetime {
         lv_obj_t* batteryIcon;
         lv_obj_t* bleIcon;
         lv_obj_t* batteryPlug;
+        lv_obj_t* statusAnim;
         // lv_obj_t* heartbeatIcon;
         // lv_obj_t* heartbeatValue;
         // lv_obj_t* stepIcon;
-        lv_obj_t* stepValue;
+        // lv_obj_t* stepValue;
         lv_obj_t* notificationIcon;
 
         Controllers::DateTime& dateTimeController;
