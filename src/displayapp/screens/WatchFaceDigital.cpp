@@ -34,7 +34,7 @@ WatchFaceDigital::WatchFaceDigital(DisplayApp* app,
 
   statusAnim = lv_obj_create(lv_scr_act(), nullptr);
   lv_obj_set_size(statusAnim, 100 ,50);
-  lv_obj_set_style_local_bg_color(ball, LV_BTN_PART_MAIN, LV_STATE_DEFAULT, watchColorTertiary);
+  lv_obj_set_style_local_bg_color(statusAnim, LV_BTN_PART_MAIN, LV_STATE_DEFAULT, watchColorTertiary);
 
 
   batteryIcon = lv_label_create(lv_scr_act(), nullptr);
