@@ -176,7 +176,7 @@ void WatchFaceDigital::Refresh() {
       } else {
         lv_label_set_text_fmt(label_date, "%s %d", dateTimeController.MonthShortToString(), day);
       }
-      lv_obj_align(label_date, lv_scr_act(), LV_ALIGN_IN_BOTTOM_RIGHT, 0, 85);
+      lv_obj_align(label_date, lv_scr_act(), LV_ALIGN_IN_BOTTOM_RIGHT, -10, -10);
 
       currentYear = year;
       currentMonth = month;

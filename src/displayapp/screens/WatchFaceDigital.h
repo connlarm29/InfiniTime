@@ -48,7 +48,7 @@ namespace Pinetime {
         lv_color_t watchColorTertiary = lv_color_hex(0x549F93);
 
         int16_t sliderOffset = 120;
-        int8_t sliderV = 3;
+        int8_t sliderV = 10;
 
         DirtyValue<uint8_t> batteryPercentRemaining {};
         DirtyValue<bool> powerPresent {};
