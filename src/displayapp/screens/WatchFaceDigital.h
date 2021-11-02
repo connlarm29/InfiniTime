@@ -43,9 +43,9 @@ namespace Pinetime {
         Pinetime::Controllers::DateTime::Days currentDayOfWeek = Pinetime::Controllers::DateTime::Days::Unknown;
         uint8_t currentDay = 0;
 
-        lv_color_t watchColorPrimary = lv_color_hex(0xE8985E);
-        lv_color_t watchColorSecondary = lv_color_hex(0x2A2E45);
-        lv_color_t watchColorTertiary = lv_color_hex(0x549F93);
+        lv_color_t watchColorPrimary = lv_color_hex(0xfc8c00);
+        lv_color_t watchColorSecondary = lv_color_hex(0xc42301);
+        lv_color_t watchColorTertiary = lv_color_hex(0xfcab00);
 
         int16_t sliderOffset = 120;
         int8_t sliderV = 10;

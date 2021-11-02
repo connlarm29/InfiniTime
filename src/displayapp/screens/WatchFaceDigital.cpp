@@ -34,11 +34,12 @@ WatchFaceDigital::WatchFaceDigital(DisplayApp* app,
 
   statusAnim = lv_obj_create(lv_scr_act(), nullptr);
   lv_obj_set_size(statusAnim, 100 ,65);
-  lv_obj_set_style_local_bg_color(statusAnim, LV_BTN_PART_MAIN, LV_STATE_DEFAULT, watchColorTertiary);
+  lv_obj_set_style_local_bg_color(statusAnim, LV_BTN_PART_MAIN, LV_STATE_DEFAULT, watchColorSecondary);
 
 
   batteryIcon = lv_label_create(lv_scr_act(), nullptr);
   lv_label_set_text(batteryIcon, Symbols::batteryFull);
+  lv_obj_set_style_local_text_color(batteryIcon, LV_LABEL_PART_MAIN, LV_STATE_DEFAULT, LV_COLOR_BLACK);
   lv_obj_align(batteryIcon, label_date, LV_ALIGN_OUT_TOP_RIGHT, 0, 0);
 
   batteryPlug = lv_label_create(lv_scr_act(), nullptr);
@@ -82,14 +83,13 @@ WatchFaceDigital::WatchFaceDigital(DisplayApp* app,
 
   taskRefresh = lv_task_create(RefreshTaskCallback, LV_DISP_DEF_REFR_PERIOD, LV_TASK_PRIO_MID, this);
   Refresh();
+  sliderOffset = 120;
   isMoving = true;
 }
 
 WatchFaceDigital::~WatchFaceDigital() {
   lv_task_del(taskRefresh);
   lv_obj_clean(lv_scr_act());
-  sliderOffset = 120;
-  isMoving = false;
 }
 
 void WatchFaceDigital::Refresh() {
