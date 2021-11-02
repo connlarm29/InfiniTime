@@ -33,7 +33,7 @@ WatchFaceDigital::WatchFaceDigital(DisplayApp* app,
 
 
   statusAnim = lv_obj_create(lv_scr_act(), nullptr);
-  lv_obj_set_size(statusAnim, 100 ,50);
+  lv_obj_set_size(statusAnim, 100 ,65);
   lv_obj_set_style_local_bg_color(statusAnim, LV_BTN_PART_MAIN, LV_STATE_DEFAULT, watchColorTertiary);
 
 
@@ -58,7 +58,7 @@ WatchFaceDigital::WatchFaceDigital(DisplayApp* app,
 
   label_date = lv_label_create(lv_scr_act(), nullptr);
   lv_obj_align(label_date, lv_scr_act(), LV_ALIGN_IN_BOTTOM_RIGHT, -10, -10);
-  lv_obj_set_style_local_text_color(label_date, LV_LABEL_PART_MAIN, LV_STATE_DEFAULT, watchColorSecondary);
+  lv_obj_set_style_local_text_color(label_date, LV_LABEL_PART_MAIN, LV_STATE_DEFAULT, LV_COLOR_BLACK);
   lv_obj_set_style_local_text_font(label_date,LV_LABEL_PART_MAIN, LV_STATE_DEFAULT, &jetbrains_mono_bold_20);
 
   label_time = lv_label_create(lv_scr_act(), nullptr);
@@ -88,6 +88,8 @@ WatchFaceDigital::WatchFaceDigital(DisplayApp* app,
 WatchFaceDigital::~WatchFaceDigital() {
   lv_task_del(taskRefresh);
   lv_obj_clean(lv_scr_act());
+  sliderOffset = 120;
+  isMoving = false;
 }
 
 void WatchFaceDigital::Refresh() {
@@ -99,11 +101,6 @@ void WatchFaceDigital::Refresh() {
   batteryPercentRemaining = batteryController.PercentRemaining();
   if (batteryPercentRemaining.IsUpdated()) {
     auto batteryPercent = batteryPercentRemaining.Get();
-    if (batteryPercent == 100) {
-      lv_obj_set_style_local_text_color(batteryIcon, LV_LABEL_PART_MAIN, LV_STATE_DEFAULT, watchColorPrimary);
-    } else {
-      lv_obj_set_style_local_text_color(batteryIcon, LV_LABEL_PART_MAIN, LV_STATE_DEFAULT, watchColorTertiary);
-    }
     lv_label_set_text(batteryIcon, BatteryIcon::GetBatteryIcon(batteryPercent));
   }
 
@@ -189,8 +186,6 @@ void WatchFaceDigital::Refresh() {
   if (sliderOffset > 0 && isMoving) {
     sliderOffset -= sliderV;
     lv_obj_align(statusAnim, label_date, LV_ALIGN_CENTER, sliderOffset, 0);
-  }else{
-    isMoving = false;
   }
 
   // stepCount = motionController.NbSteps();
