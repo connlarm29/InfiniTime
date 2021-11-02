@@ -82,6 +82,7 @@ WatchFaceDigital::WatchFaceDigital(DisplayApp* app,
 
   taskRefresh = lv_task_create(RefreshTaskCallback, LV_DISP_DEF_REFR_PERIOD, LV_TASK_PRIO_MID, this);
   Refresh();
+  isMoving = true;
 }
 
 WatchFaceDigital::~WatchFaceDigital() {
@@ -185,9 +186,11 @@ void WatchFaceDigital::Refresh() {
     }
   }
 
-  if (sliderOffset > 0) {
+  if (sliderOffset > 0 && isMoving) {
     sliderOffset -= sliderV;
     lv_obj_align(statusAnim, label_date, LV_ALIGN_CENTER, sliderOffset, 0);
+  }else{
+    isMoving = false;
   }
 
   // stepCount = motionController.NbSteps();

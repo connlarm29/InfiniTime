@@ -49,6 +49,7 @@ namespace Pinetime {
 
         int16_t sliderOffset = 120;
         int8_t sliderV = 10;
+        bool isMoving = false;
 
         DirtyValue<uint8_t> batteryPercentRemaining {};
         DirtyValue<bool> powerPresent {};
