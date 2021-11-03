@@ -181,8 +181,7 @@ void WatchFaceDigital::Refresh() {
       currentDay = day;
     }
   }
-  screenRunning = Screen.IsRunning();
-  if(screenRunning.IsUpdated()){
+  if(WatchFaceDigital::IsRunning()){
     if (sliderOffset > 0) {
       sliderOffset -= sliderV;
       lv_obj_align(statusAnim, label_date, LV_ALIGN_CENTER, sliderOffset, 0);
