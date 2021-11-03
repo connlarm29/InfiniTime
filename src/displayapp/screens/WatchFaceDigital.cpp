@@ -185,9 +185,13 @@ void WatchFaceDigital::Refresh() {
     }
   }
 
-  if (sliderOffset > 0) {
-    sliderOffset -= sliderV;
-    lv_obj_align(statusAnim, label_date, LV_ALIGN_CENTER, sliderOffset, 0);
+  if(screen.IsRunning()){
+    if (sliderOffset > 0) {
+      sliderOffset -= sliderV;
+      lv_obj_align(statusAnim, label_date, LV_ALIGN_CENTER, sliderOffset, 0);
+    }
+  }else{
+    sliderOffset = 120;
   }
 
   // stepCount = motionController.NbSteps();
