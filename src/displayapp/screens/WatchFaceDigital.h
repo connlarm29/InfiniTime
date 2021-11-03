@@ -30,6 +30,7 @@ namespace Pinetime {
                          Controllers::NotificationManager& notificatioManager,
                          Controllers::Settings& settingsController,
                          // Controllers::HeartRateController& heartRateController,
+                         System::SystemTask& systemTask,
                          Controllers::MotionController& motionController);
         ~WatchFaceDigital() override;
 
@@ -75,6 +76,7 @@ namespace Pinetime {
         // lv_obj_t* stepValue;
         lv_obj_t* notificationIcon;
 
+        Pinetime::System::SystemTask& systemTask;
         Controllers::DateTime& dateTimeController;
         Controllers::Battery& batteryController;
         Controllers::Ble& bleController;

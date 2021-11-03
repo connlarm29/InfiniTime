@@ -20,6 +20,7 @@ WatchFaceDigital::WatchFaceDigital(DisplayApp* app,
                                    Controllers::Ble& bleController,
                                    Controllers::NotificationManager& notificatioManager,
                                    Controllers::Settings& settingsController,
+                                   System::SystemTask& systemTask,
                                    Controllers::MotionController& motionController)
   : Screen(app),
     currentDateTime {{}},
@@ -28,6 +29,7 @@ WatchFaceDigital::WatchFaceDigital(DisplayApp* app,
     bleController {bleController},
     notificatioManager {notificatioManager},
     settingsController {settingsController},
+    systemTask {systemTask},
     motionController {motionController} {
   settingsController.SetClockFace(0);
 
@@ -181,7 +183,7 @@ void WatchFaceDigital::Refresh() {
       currentDay = day;
     }
   }
-  if(WatchFaceDigital::IsRunning()){
+  if(!systemTask.IsSleeping()){
     if (sliderOffset > 0) {
       sliderOffset -= sliderV;
       lv_obj_align(statusAnim, label_date, LV_ALIGN_CENTER, sliderOffset, 0);
