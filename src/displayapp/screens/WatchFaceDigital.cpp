@@ -182,7 +182,7 @@ void WatchFaceDigital::Refresh() {
     }
   }
 
-  if(screen.IsRunning()){
+  if(Screen.IsRunning()){
     if (sliderOffset > 0) {
       sliderOffset -= sliderV;
       lv_obj_align(statusAnim, label_date, LV_ALIGN_CENTER, sliderOffset, 0);
