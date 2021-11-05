@@ -184,7 +184,8 @@ void WatchFaceDigital::Refresh() {
     }
   }
 
-  if(Screen::state = Screen::States::idle){
+  if(Pinetime::Applications::Display::Screen::state =
+    Pinetime::Applications::Display::Screen::States::idle){
     sliderOffset = 120;
   }else{
     if (sliderOffset > 0) {
