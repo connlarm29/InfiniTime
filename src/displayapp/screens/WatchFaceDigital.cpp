@@ -183,7 +183,7 @@ void WatchFaceDigital::Refresh() {
       currentDay = day;
     }
   }
-  if(systemTask.IsWakingUp()){
+  if(systemTask.isWakingUp){
     sliderOffset = 120;
   }else{
     if (sliderOffset > 0) {
