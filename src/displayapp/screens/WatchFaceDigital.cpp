@@ -183,7 +183,8 @@ void WatchFaceDigital::Refresh() {
       currentDay = day;
     }
   }
-  if(systemTask.IsSleeping()){
+
+  if(Screen::state = Screen::States::idle){
     sliderOffset = 120;
   }else{
     if (sliderOffset > 0) {
