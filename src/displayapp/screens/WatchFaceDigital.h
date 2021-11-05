@@ -6,7 +6,6 @@
 #include <memory>
 #include "Screen.h"
 #include "ScreenList.h"
-#include "systemtask/SystemTask.h"
 #include "components/datetime/DateTimeController.h"
 
 namespace Pinetime {
@@ -31,7 +30,6 @@ namespace Pinetime {
                          Controllers::NotificationManager& notificatioManager,
                          Controllers::Settings& settingsController,
                          // Controllers::HeartRateController& heartRateController,
-                         System::SystemTask& systemTask,
                          Controllers::MotionController& motionController);
         ~WatchFaceDigital() override;
 
@@ -83,7 +81,6 @@ namespace Pinetime {
         Controllers::NotificationManager& notificatioManager;
         Controllers::Settings& settingsController;
         // Controllers::HeartRateController& heartRateController;
-        Pinetime::System::SystemTask& systemTask;
         Controllers::MotionController& motionController;
 
         lv_task_t* taskRefresh;

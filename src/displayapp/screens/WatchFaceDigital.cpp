@@ -20,7 +20,6 @@ WatchFaceDigital::WatchFaceDigital(DisplayApp* app,
                                    Controllers::Ble& bleController,
                                    Controllers::NotificationManager& notificatioManager,
                                    Controllers::Settings& settingsController,
-                                   System::SystemTask& systemTask,
                                    Controllers::MotionController& motionController)
   : Screen(app),
     currentDateTime {{}},
@@ -29,7 +28,6 @@ WatchFaceDigital::WatchFaceDigital(DisplayApp* app,
     bleController {bleController},
     notificatioManager {notificatioManager},
     settingsController {settingsController},
-    systemTask {systemTask},
     motionController {motionController} {
   settingsController.SetClockFace(0);
 
@@ -184,8 +182,7 @@ void WatchFaceDigital::Refresh() {
     }
   }
 
-  if(Pinetime::Applications::Display::Screen::state =
-    Pinetime::Applications::Display::Screen::States::idle){
+  if(Screen::state == DisplayApp::States::Idle){
     sliderOffset = 120;
   }else{
     if (sliderOffset > 0) {

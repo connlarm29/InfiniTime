@@ -20,10 +20,8 @@ Clock::Clock(DisplayApp* app,
              Controllers::NotificationManager& notificatioManager,
              Controllers::Settings& settingsController,
              Controllers::HeartRateController& heartRateController,
-             System::SystemTask& systemTask,
              Controllers::MotionController& motionController)
   : Screen(app),
-    systemTask {systemTask},
     dateTimeController {dateTimeController},
     batteryController {batteryController},
     bleController {bleController},
@@ -63,7 +61,6 @@ std::unique_ptr<Screen> Clock::WatchFaceDigitalScreen() {
                                                      bleController,
                                                      notificatioManager,
                                                      settingsController,
-                                                     systemTask,
                                                      motionController);
 }
 
