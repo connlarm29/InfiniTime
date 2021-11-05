@@ -182,7 +182,7 @@ void WatchFaceDigital::Refresh() {
     }
   }
 
-  if(Screen::state == DisplayApp::States::Idle){
+  if(Pinetime::Applications::Display::state == DisplayApp::States::Idle){
     sliderOffset = 120;
   }else{
     if (sliderOffset > 0) {
