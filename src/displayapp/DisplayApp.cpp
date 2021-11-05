@@ -129,6 +129,10 @@ void DisplayApp::Start(System::BootErrors error) {
   }
 }
 
+bool DisplayApp::InIdleState(){
+  if(state == States::Idle) return true; else return false;
+}
+
 void DisplayApp::Process(void* instance) {
   auto* app = static_cast<DisplayApp*>(instance);
   NRF_LOG_INFO("displayapp task started!");

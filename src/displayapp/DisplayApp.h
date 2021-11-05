@@ -71,6 +71,8 @@ namespace Pinetime {
 
       void Register(Pinetime::System::SystemTask* systemTask);
 
+      bool InIdleState();
+
     private:
       Pinetime::Drivers::St7789& lcd;
       Pinetime::Components::LittleVgl& lvgl;
