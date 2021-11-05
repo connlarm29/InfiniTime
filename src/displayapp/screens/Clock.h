@@ -28,12 +28,14 @@ namespace Pinetime {
               Controllers::NotificationManager& notificatioManager,
               Controllers::Settings& settingsController,
               Controllers::HeartRateController& heartRateController,
+              System::SystemTask& systemTask,
               Controllers::MotionController& motionController);
         ~Clock() override;
 
         bool OnTouchEvent(TouchEvents event) override;
 
       private:
+        Pinetime::System::SystemTask& systemTask;
         Controllers::DateTime& dateTimeController;
         Controllers::Battery& batteryController;
         Controllers::Ble& bleController;

@@ -183,13 +183,13 @@ void WatchFaceDigital::Refresh() {
       currentDay = day;
     }
   }
-  if(!systemTask.IsSleeping()){
+  if(systemTask.IsWakingUp()){
+    sliderOffset = 120;
+  }else{
     if (sliderOffset > 0) {
       sliderOffset -= sliderV;
       lv_obj_align(statusAnim, label_date, LV_ALIGN_CENTER, sliderOffset, 0);
     }
-  }else{
-    sliderOffset = 120;
   }
 
   // stepCount = motionController.NbSteps();
