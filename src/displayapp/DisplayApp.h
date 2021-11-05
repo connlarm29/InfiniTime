@@ -71,8 +71,6 @@ namespace Pinetime {
 
       void Register(Pinetime::System::SystemTask* systemTask);
 
-      enum States GetCurrentDisplayAppState();
-
     private:
       Pinetime::Drivers::St7789& lcd;
       Pinetime::Components::LittleVgl& lvgl;

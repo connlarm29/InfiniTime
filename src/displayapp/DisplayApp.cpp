@@ -286,10 +286,6 @@ void DisplayApp::StartApp(Apps app, DisplayApp::FullRefreshDirections direction)
   nextDirection = direction;
 }
 
-enum States DisplayApp::GetCurrentDisplayAppState(){
-  return state;
-}
-
 void DisplayApp::ReturnApp(Apps app, DisplayApp::FullRefreshDirections direction, TouchEvents touchEvent) {
   returnToApp = app;
   returnDirection = direction;
