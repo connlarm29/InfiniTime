@@ -286,7 +286,7 @@ void DisplayApp::StartApp(Apps app, DisplayApp::FullRefreshDirections direction)
   nextDirection = direction;
 }
 
-States DisplayApp::GetCurrentDisplayAppState(){
+enum States DisplayApp::GetCurrentDisplayAppState(){
   return state;
 }
 
