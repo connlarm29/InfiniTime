@@ -77,13 +77,13 @@ namespace Pinetime {
         // lv_obj_t* stepValue;
         lv_obj_t* notificationIcon;
 
-        Pinetime::System::SystemTask& systemTask;
         Controllers::DateTime& dateTimeController;
         Controllers::Battery& batteryController;
         Controllers::Ble& bleController;
         Controllers::NotificationManager& notificatioManager;
         Controllers::Settings& settingsController;
         // Controllers::HeartRateController& heartRateController;
+        Pinetime::System::SystemTask& systemTask;
         Controllers::MotionController& motionController;
 
         lv_task_t* taskRefresh;
