@@ -182,7 +182,7 @@ void WatchFaceDigital::Refresh() {
     }
   }
 
-  if(Pinetime::Applications::Display::DisplayApp::state == Pinetime::Applications::Display::DisplayApp::States::Idle){
+  if(Pinetime::Applications::Display::GetCurrentDisplayAppState() == Pinetime::Applications::Display::States::Idle){
     sliderOffset = 120;
   }else{
     if (sliderOffset > 0) {
