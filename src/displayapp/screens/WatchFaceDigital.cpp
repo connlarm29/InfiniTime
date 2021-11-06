@@ -182,13 +182,13 @@ void WatchFaceDigital::Refresh() {
     }
   }
 
-  if(app->InIdleState()){
-    sliderOffset = 120;
-  }else{
+  if(!app->InIdleState()){
     if (sliderOffset > 0) {
       sliderOffset -= sliderV;
       lv_obj_align(statusAnim, label_date, LV_ALIGN_CENTER, sliderOffset, 0);
     }
+  }else{
+    sliderOffset = 120;
   }
 
   // stepCount = motionController.NbSteps();
